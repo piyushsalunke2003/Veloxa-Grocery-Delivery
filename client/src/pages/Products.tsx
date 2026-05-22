@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom"
 import type { Product } from "../types";
 import { categoriesData, dummyProducts } from "../assets/assets";
-import { Home, SlidersHorizontal } from "lucide-react";
+import { ChevronDown, Home, SlidersHorizontal } from "lucide-react";
 
 
 const Products = () => {
@@ -94,6 +94,7 @@ useEffect(()=>{
                     <option value="rating">Top rated</option>
                     <option value="name">A TO Z</option>
                   </select>
+                  <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-app-text-light pointer-events-none"/>
                 </div>
               </div>
             </div>

@@ -26,13 +26,13 @@ const App = () => {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<Home />} /> 
         <Route path="products" element={<Products />} />
-        <Route path="products/:id" element={<ProductPage />} />
+        <Route path="products/:_id" element={<ProductPage />} />
         <Route path="search" element={<SearchResults />} />
         <Route path="deals" element={<FlashDeals />} />
         <Route element={<ProtectedRoute />} >
           <Route path="checkout" element={<Checkout />} />
           <Route path="orders" element={<MyOrders />} />
-          <Route path="order/:id" element={<OrderTracking />} />
+          <Route path="order/:_id" element={<OrderTracking />} />
           <Route path="addresses" element={<Addresses />} />
         </Route>
 
