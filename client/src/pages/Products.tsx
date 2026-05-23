@@ -4,6 +4,7 @@ import type { Product } from "../types";
 import { categoriesData, dummyProducts } from "../assets/assets";
 import { ChevronDown, Home, SlidersHorizontal } from "lucide-react";
 import ProductCard from "../components/ProductCard";
+import Loading from "../components/Loading";
 
 
 const Products = () => {
@@ -102,7 +103,7 @@ useEffect(()=>{
 
             {/* Product Grid */}
             {loading ? (
-              <p>Loading...</p>
+              <Loading />
             ) : products.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-lg font-semibold text-app-green mb-2">No products found</p>
