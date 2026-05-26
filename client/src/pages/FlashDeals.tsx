@@ -10,10 +10,15 @@ const FlashDeals = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-    setProducts(dummyProducts.filter((p: any)=> p.stock > 0))
-    setTimeout(()=> setLoading(false), 1000)
-  })
+useEffect(() => {
+  setProducts(dummyProducts.filter((p: Product) => p.stock > 0))
+
+  const timer = setTimeout(() => {
+    setLoading(false)
+  }, 1000)
+
+  return () => clearTimeout(timer)
+}, [])
 
   return (
     <div className="min-h-screen bg-app-cream">
