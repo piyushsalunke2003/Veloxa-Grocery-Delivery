@@ -12,13 +12,8 @@ const FlashDeals = () => {
 
 useEffect(() => {
   setProducts(dummyProducts.filter((p: Product) => p.stock > 0))
-
-  const timer = setTimeout(() => {
-    setLoading(false)
-  }, 1000)
-
-  return () => clearTimeout(timer)
-}, [])
+  setTimeout(()=> setLoading(false), 1000)
+},[])
 
   return (
     <div className="min-h-screen bg-app-cream">
@@ -46,7 +41,7 @@ useEffect(() => {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
               {products.map((product)=> product.stock > 0 && (
-                <ProductCard key={product._id} product={product} />
+                <ProductCard key={product._id} product={product}/>
               ))}
             </div>
           )

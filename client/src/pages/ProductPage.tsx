@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useEffect, useState } from "react";
 import type { Product } from "../types";
 import { dummyProducts } from "../assets/assets";
 import Loading from "../components/Loading";
@@ -37,8 +37,7 @@ const ProductPage = () => {
   const inCart = !!cartItem;
   const displayQuantitiy = inCart ? cartItem.quantity : localQuantity
 
-  const categoryLabel = product.category.replace(/-/g, " ")
-
+  const categoryLabel = product.category.replace(/-/g, " ");
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -49,8 +48,11 @@ const ProductPage = () => {
           </Link>
           <span>/</span>
           <Link to='/products' className="hover:text-app-green transition-colors">
-            <HomeIcon className="size-4" />
             Products
+          </Link>
+          <span>/</span>
+          <Link to={`/products?category=${product.category}`} className="hover:text-app-green transition-colors capitalize" >
+            {categoryLabel}
           </Link>
           <span>/</span>
           <span className="text-app-green font-medium truncate max-w-[200px]">{product.name}</span>
