@@ -11,7 +11,7 @@ import ProductCard from "../components/ProductCard";
 
 const ProductPage = () => {
 
-  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "$";
+  const currency = import.meta.env.VITE_CURRENCY_SYMBOL || "₹";
   const { _id } = useParams()
   const navigate = useNavigate()
   const {items, addToCart, updateQuantity, removeFromCart} = useCart()
