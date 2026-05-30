@@ -3,7 +3,10 @@ import { useNavigate, useParams } from "react-router-dom"
 import type { Order } from "../types";
 import { dummyDashboardOrdersData } from "../assets/assets";
 import Loading from "../components/Loading";
-import { ArrowLeftIcon } from "lucide-react";
+import { ArrowLeftIcon, PhoneIcon } from "lucide-react";
+import OrderOTP from "../components/OrderTracking/OrderOTP";
+import LiveMap from "../components/OrderTracking/LiveMap";
+import OrderTimeLine from "../components/OrderTracking/OrderTimeLine";
 
 
 const OrderTracking = () => {
@@ -35,6 +38,44 @@ const OrderTracking = () => {
             <h1 className="text-2xl font-semibold text-app-green">Order #{order!._id.slice(-8).toUpperCase()}</h1>
             <p className="text-sm text-app-text-light mt-1">Placed on {new Date(order!.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</p>
           </div>
+          <span className={`px-4 py-1.5 text-sm font-semibold rounded-full ${order!.status === "Delivered" ? "bg-green-100 text-green-700" : order!.status === "Cancelled" ? "bg-red-100 text-red-700" : "bg-app-orange/10 text-app-orange"}`}>
+          {order!.status}
+          </span>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Left side - Timeline + Map Area */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* OTP Card */}
+            <OrderOTP order={order}/>
+            {/* Live Tracking Map */}
+            <LiveMap order={order} liveLocation={liveLocation}/>
+            {/* Progress Timeline */}
+            <OrderTimeLine order={order}/>
+
+            {/* Delivery Person */}
+            {order?.deliveryPartner && order.status !== "Delivered" && order.status !== "Cancelleed" && (
+              <div className="bg-white rounded-2xl p-5 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="size-11 rounded-full bg-app-green flex-center">
+                    <span className="text-white font-semibold text-sm">
+                      {order.deliveryPartner.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-app-green">{order.deliveryPartner.name}</p>
+                    <p className="text-xs text-app-text-light capitalize">{order.deliveryPartner.vehicleType} • Delivery Partner</p>
+                  </div>
+                </div>
+                <a href={`tel:${order.deliveryPartner.phone}`}
+                className="p-2.5 bg-app-cream rounded-xl hover:bg-app-cream-dark transition-colors">
+                  <PhoneIcon className="size-4 text-app-green"/>
+                </a>
+              </div>
+            )}
+
+          </div>
+          {/* Right side - Order Details */}
+          <div></div>
         </div>
       </div>
     </div>
