@@ -8,16 +8,16 @@ import { ArrowLeftIcon } from "lucide-react";
 
 const OrderTracking = () => {
 
-  const {id} = useParams();
+  const {_id} = useParams();
   const navigate = useNavigate()
   const [order, setOrder] = useState<Order | null>(null)
   const [loading, setLoading] = useState(true)
   const [liveLocation, setLiveLocation] = useState<{lat: number; lng:number} | null>(null)
 
   useEffect(()=> {
-    setOrder(dummyDashboardOrdersData.find((o)=>o._id === id) as any)
+    setOrder(dummyDashboardOrdersData.find((o)=>o._id === _id) as any)
     setLoading(false)
-  },[id, navigate])
+  },[_id, navigate])
 
   if(loading) return <Loading/>
   if(!order) null
