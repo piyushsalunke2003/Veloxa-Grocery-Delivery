@@ -60,6 +60,10 @@ const AddressesForm = ({resetForm, handleSubmit, form, setForm, editingId} : any
                 </div>
               </div>
             </div>
+            {/* Submit Button */}
+            <button type="submit" className="mt-6 w-full py-3 bg-app-green text-white font-semibold rounded-xl hover:bg-app-green-light transition-colors">
+              {editingId? "Update Address" : "Save Address"}
+            </button>
         </form>
       </div>
     </>
