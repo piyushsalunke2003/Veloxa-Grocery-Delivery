@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Address } from '../types';
 import { CheckIcon, MapPinIcon, PencilIcon, TrashIcon } from 'lucide-react';
 
