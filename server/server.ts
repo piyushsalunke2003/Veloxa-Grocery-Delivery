@@ -24,7 +24,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/products', productRouter)
 app.use('/api/upload', uploadRouter)
 app.use('/api/order', orderRouter)
-app.use("api/inngest", serve({ client: inngest, functions }))
+app.use("/api/inngest", serve({ client: inngest, functions }))
 
 //Error handling
 app.use((error:any, req: Request, res: Response, next: NextFunction)=>{
