@@ -40,8 +40,8 @@ export function AuthProvider({children} : {children: ReactNode}){
             const { data } = await api.post('/auth/login', {email, password})
             setUser(data.user)
             setToken(data.token)
-            localStorage.set("auth_token", data.token)
-            localStorage.set("auth_user", JSON.stringify(data.user))
+            localStorage.setItem("auth_token", data.token)
+            localStorage.setItem("auth_user", JSON.stringify(data.user))
             toast.success("Login successful")
             navigate('/')
         } catch (error: any) {
@@ -54,8 +54,8 @@ export function AuthProvider({children} : {children: ReactNode}){
             const { data } = await api.post('/auth/register', {name, email, password})
             setUser(data.user)
             setToken(data.token)
-            localStorage.set("auth_token", data.token)
-            localStorage.set("auth_user", JSON.stringify(data.user))
+            localStorage.setItem("auth_token", data.token)
+            localStorage.setItem("auth_user", JSON.stringify(data.user))
             toast.success("Registration successful")
             navigate('/')
         } catch (error: any) {
